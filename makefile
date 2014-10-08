@@ -9,8 +9,10 @@
 #   install-both-unix      also install unix-only 
 #   print	           print the build settings
 
-PLAT?= linux
-PLATS= macosx linux win32 mingw freebsd
+LUA ?= $(which lua)
+
+PLAT ?= linux
+PLATS = macosx linux win32 mingw freebsd
 
 all: $(PLAT)
 
@@ -21,7 +23,7 @@ print:
 	$(MAKE) -C src $@
 
 test:
-	lua test/hello.lua
+	$(LUA) test/hello.lua
 
 install-both:
 	$(MAKE) clean 
@@ -40,4 +42,3 @@ install-both-unix:
 	@cd src; $(MAKE) install-unix LUAV=5.2
 
 .PHONY: test
-
