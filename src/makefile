@@ -1,5 +1,6 @@
-# luasocket src/makefile
+# luasocket src/Makefile
 # only works on macosx :)
+# really horrible makefile.
 
 PLAT ?= macosx
 
@@ -172,7 +173,7 @@ $(UNIX_SO): $(UNIX_OBJS)
 $(SERIAL_SO): $(SERIAL_OBJS)
 	$(LD) $(SERIAL_OBJS) $(LDFLAGS)$@
 
-install: 
+install:
 	$(INSTALL_DIR) $(INSTALL_TOP_LDIR)
 	$(INSTALL_DATA) $(TO_TOP_LDIR) $(INSTALL_TOP_LDIR)
 	$(INSTALL_DIR) $(INSTALL_SOCKET_LDIR)
@@ -195,9 +196,7 @@ clean:
 
 .PHONY: all $(PLATS) default clean echo none
 
-#------
 # List of dependencies
-#
 auxiliar.$(O): auxiliar.c auxiliar.h
 buffer.$(O): buffer.c buffer.h io.h timeout.h
 except.$(O): except.c except.h
